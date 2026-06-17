@@ -1,3 +1,4 @@
+console.log("JS Loaded");
 const gallery = document.getElementById("gallery");
 
 const wallpapers = [
@@ -115,6 +116,12 @@ loader.remove();
 },20);
 
 });
+
+console.log(document.getElementById("allBtn"));
+console.log(document.getElementById("spaceBtn"));
+console.log(document.getElementById("gamingBtn"));
+console.log(document.getElementById("aestheticBtn"));
+console.log(document.getElementById("search"));
 
 // Search
 
