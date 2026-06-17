@@ -152,3 +152,69 @@ openPreview(random.image);
 }
 
 loadWallpapers(wallpapers);
+
+window.addEventListener("load", () => {
+
+const loader =
+document.getElementById(
+"loading-screen"
+);
+
+const progress =
+document.querySelector(
+".loader-progress"
+);
+
+const text =
+document.getElementById(
+"loading-text"
+);
+
+const messages = [
+
+"Initializing Universe...",
+"Loading Wallpapers...",
+"Activating Space Engine...",
+"Generating Galaxies...",
+"Preparing Launch..."
+];
+
+let width = 0;
+let step = 0;
+
+const interval =
+setInterval(() => {
+
+width++;
+
+progress.style.width =
+width + "%";
+
+if(width % 20 === 0 &&
+step < messages.length){
+
+text.textContent =
+messages[step];
+
+step++;
+}
+
+if(width >= 100){
+
+clearInterval(interval);
+
+loader.classList.add(
+"morph-out"
+);
+
+setTimeout(() => {
+
+loader.style.display =
+"none";
+
+},1200);
+}
+
+},25);
+
+});
