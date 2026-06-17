@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Galaxy Forge</title>
 
 <link rel="stylesheet" href="style.css">
@@ -12,88 +10,80 @@
 
 <body>
 
-<div id="loading-screen">
+<!-- LOADER -->
 
+<div id="loader">
     <div class="loader-content">
 
-        <h1 class="loader-title">
-            🌌 GALAXY FORGE
-        </h1>
+        <h1>🌌 GALAXY FORGE</h1>
 
-        <div class="loader-bar">
+        <p>Initializing Universe...</p>
 
-            <div class="loader-progress"></div>
-
+        <div class="progress-container">
+            <div id="progress-bar"></div>
         </div>
 
-        <div id="loading-text">
-            Initializing Universe...
+        <span id="progress-text">0%</span>
+
+    </div>
+</div>
+
+<!-- MAIN SITE -->
+
+<div class="container">
+
+    <header>
+
+        <h1>🌌 GALAXY FORGE</h1>
+
+        <p>Gaming • Space • Cyberpunk Wallpapers</p>
+
+        <button id="randomBtn">
+            🎲 Random Wallpaper
+        </button>
+
+    </header>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search wallpapers..."
+    >
+
+    <div class="filters">
+
+        <button>All</button>
+        <button>Space</button>
+        <button>Gaming</button>
+        <button>Aesthetic</button>
+
+    </div>
+
+    <div class="stats">
+
+        <div>
+            <h2>8</h2>
+            <p>Wallpapers</p>
+        </div>
+
+        <div>
+            <h2>3</h2>
+            <p>Categories</p>
+        </div>
+
+        <div>
+            <h2>∞</h2>
+            <p>Downloads</p>
         </div>
 
     </div>
 
-</div>
+    <h2 class="section-title">
+        ⭐ Wallpaper Collection
+    </h2>
 
-<div class="stars"></div>
-
-<header class="hero">
-
-<h1>🌌 GALAXY FORGE</h1>
-
-<p>
-Gaming • Space • Cyberpunk Wallpapers
-</p>
-
-<button onclick="showRandomWallpaper()">
-🎲 Random Wallpaper
-</button>
-
-</header>
-
-<section class="top-bar">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search wallpapers..."
-onkeyup="searchWallpaper()"
->
-
-</section>
-
-<section class="filters">
-
-<button onclick="filterWallpapers('all')">
-All
-</button>
-
-<button onclick="filterWallpapers('space')">
-Space
-</button>
-
-<button onclick="filterWallpapers('gaming')">
-Gaming
-</button>
-
-<button onclick="filterWallpapers('aesthetic')">
-Aesthetic
-</button>
-
-</section>
-
-<h2 class="section-title">
-🌠 Wallpaper Collection
-</h2>
-
-<div id="gallery" class="gallery"></div>
-
-<div id="preview" class="preview">
-
-<span onclick="closePreview()">
-✖
-</span>
-
-<img id="previewImg">
+    <div class="gallery" id="gallery">
+    </div>
 
 </div>
 
