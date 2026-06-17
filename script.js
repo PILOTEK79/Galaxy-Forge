@@ -1,220 +1,84 @@
+const gallery = document.getElementById("gallery");
+
 const wallpapers = [
-
-{
-name:"Astronaut",
-category:"space",
-image:"wp12531994-astronaut-4k-desktop-wallpapers.jpg"
-},
-
-{
-name:"Galaxy",
-category:"space",
-image:"wp13508917-black-and-white-galaxy-wallpapers.jpg"
-},
-
-{
-name:"Landscape",
-category:"aesthetic",
-image:"wp14448617-landscape-4k-aesthetic-wallpapers.jpg"
-},
-
-{
-name:"FPS Gaming",
-category:"gaming",
-image:"wp7716162-fps-games-wallpapers.jpg"
-},
-
-{
-name:"RGB Room",
-category:"gaming",
-image:"wp11697464-rgb-room-wallpapers.jpg"
-},
-
-{
-name:"Lords Of The Fallen",
-category:"gaming",
-image:"wp16052499-lords-of-the-fallen-2-wallpapers.jpg"
-},
-
-{
-name:"Cyber Space",
-category:"space",
-image:"uwp4962248.jpeg"
-},
-
-{
-name:"Neon Space",
-category:"space",
-image:"uwp5003329.png"
-}
-
+"images/wp12531994-astronaut-4k-desktop-wallpapers.jpg",
+"images/wp14448617-landscape-4k-aesthetic-wallpapers.jpg",
+"images/wp16052499-lords-of-the-fallen-2-wallpapers.jpg",
+"images/wp7716162-fps-games-wallpapers.jpg",
+"images/wp11697464-rgb-room-wallpapers.jpg",
+"images/uwp5003329.png"
 ];
 
-const gallery =
-document.getElementById("gallery");
-
-function loadWallpapers(data){
+function loadGallery(){
 
 gallery.innerHTML="";
 
-data.forEach(item=>{
+wallpapers.forEach(img=>{
 
 gallery.innerHTML += `
-
-<div class="card">
-
-<img
-src="${item.image}"
-onclick="openPreview('${item.image}')"
->
-
-<h3 style="margin-top:10px">
-${item.name}
-</h3>
-
-<a
-href="${item.image}"
-download
-class="download-btn">
-
-Download
-
-</a>
-
+<div class="wallpaper-card">
+<img src="${img}">
 </div>
 `;
+
 });
+
 }
 
-function filterWallpapers(category){
+loadGallery();
 
-if(category==="all"){
-
-loadWallpapers(wallpapers);
-return;
-}
-
-const filtered =
-wallpapers.filter(
-item=>item.category===category
-);
-
-loadWallpapers(filtered);
-}
-
-function searchWallpaper(){
-
-const search =
-document
-.getElementById("searchInput")
-.value
-.toLowerCase();
-
-const filtered =
-wallpapers.filter(item=>
-item.name
-.toLowerCase()
-.includes(search)
-);
-
-loadWallpapers(filtered);
-}
-
-function openPreview(image){
-
-document.getElementById(
-"previewImg"
-).src=image;
-
-document.getElementById(
-"preview"
-).style.display="flex";
-}
-
-function closePreview(){
-
-document.getElementById(
-"preview"
-).style.display="none";
-}
-
-function showRandomWallpaper(){
+document.getElementById("randomBtn")
+.addEventListener("click",()=>{
 
 const random =
-wallpapers[
-Math.floor(
-Math.random()
-* wallpapers.length
-)
-];
+wallpapers[Math.floor(
+Math.random()*wallpapers.length
+)];
 
-openPreview(random.image);
-}
+window.open(random,"_blank");
 
-loadWallpapers(wallpapers);
+});
 
-window.addEventListener("load", () => {
+window.addEventListener("load",()=>{
 
-const loader =
-document.getElementById(
-"loading-screen"
-);
+let loader =
+document.getElementById("loader");
 
-const progress =
-document.querySelector(
-".loader-progress"
-);
+let bar =
+document.getElementById("progress-bar");
 
-const text =
-document.getElementById(
-"loading-text"
-);
+let text =
+document.getElementById("progress-text");
 
-const messages = [
+let progress=0;
 
-"Initializing Universe...",
-"Loading Wallpapers...",
-"Activating Space Engine...",
-"Generating Galaxies...",
-"Preparing Launch..."
-];
+let interval = setInterval(()=>{
 
-let width = 0;
-let step = 0;
+progress++;
 
-const interval =
-setInterval(() => {
+bar.style.width =
+progress+"%";
 
-width++;
+text.innerHTML =
+progress+"%";
 
-progress.style.width =
-width + "%";
-
-if(width % 20 === 0 &&
-step < messages.length){
-
-text.textContent =
-messages[step];
-
-step++;
-}
-
-if(width >= 100){
+if(progress>=100){
 
 clearInterval(interval);
 
-loader.classList.add(
-"morph-out"
-);
+loader.style.transform =
+"scale(1.3)";
 
-setTimeout(() => {
+loader.style.opacity="0";
 
-loader.style.display =
-"none";
+setTimeout(()=>{
 
-},1200);
+loader.style.display="none";
+
+},1000);
+
 }
 
-},25);
+},20);
 
 });
