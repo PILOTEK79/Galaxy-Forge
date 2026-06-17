@@ -40,21 +40,22 @@ file:"wp11697464-rgb-room-wallpapers.jpg"
 
 ];
 
-function loadGallery(){
+function loadGallery(items = wallpapers){
 
 gallery.innerHTML="";
 
-wallpapers.forEach(img=>{
+items.forEach(w=>{
 
 gallery.innerHTML += `
 <div class="wallpaper-card">
-<img src="${img}">
+<img src="${w.file}">
 </div>
 `;
 
 });
 
 }
+
 
 loadGallery();
 
