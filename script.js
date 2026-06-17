@@ -1,12 +1,43 @@
 const gallery = document.getElementById("gallery");
 
 const wallpapers = [
-"wp12531994-astronaut-4k-desktop-wallpapers.jpg",
-"wp14448617-landscape-4k-aesthetic-wallpapers.jpg",
-"wp16052499-lords-of-the-fallen-2-wallpapers.jpg",
-"wp7716162-fps-games-wallpapers.jpg",
-"uwp5003329.png",
-"uwp4962248.jpeg"
+
+{
+name:"Astronaut",
+category:"space",
+file:"wp12531994-astronaut-4k-desktop-wallpapers.jpg"
+},
+
+{
+name:"Galaxy",
+category:"space",
+file:"uwp5003329.png"
+},
+
+{
+name:"FPS",
+category:"gaming",
+file:"wp7716162-fps-games-wallpapers.jpg"
+},
+
+{
+name:"Lords Of The Fallen",
+category:"gaming",
+file:"wp16052499-lords-of-the-fallen-2-wallpapers.jpg"
+},
+
+{
+name:"Landscape",
+category:"aesthetic",
+file:"wp14448617-landscape-4k-aesthetic-wallpapers.jpg"
+},
+
+{
+name:"RGB Room",
+category:"aesthetic",
+file:"wp11697464-rgb-room-wallpapers.jpg"
+}
+
 ];
 
 function loadGallery(){
