@@ -210,5 +210,63 @@ font-size:3rem;
 flex-direction:column;
 gap:20px;
 }
+.loader-content{
+text-align:center;
+}
 
+.loader-content h1{
+
+font-size:4rem;
+
+color:#38bdf8;
+
+text-shadow:
+0 0 20px #38bdf8,
+0 0 50px #38bdf8;
+
+margin-bottom:20px;
+}
+
+.loader-content p{
+
+font-size:1.3rem;
+
+color:#cbd5e1;
+}
+
+.progress-container{
+
+width:450px;
+height:15px;
+
+background:#1e293b;
+
+border-radius:100px;
+
+overflow:hidden;
+
+margin-top:25px;
+}
+
+#progress-bar{
+
+width:0%;
+
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+#38bdf8,
+#0ea5e9
+);
+}
+
+#progress-text{
+
+margin-top:15px;
+
+font-size:1.4rem;
+
+color:#38bdf8;
 }
