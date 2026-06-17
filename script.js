@@ -67,7 +67,7 @@ wallpapers[Math.floor(
 Math.random()*wallpapers.length
 )];
 
-window.open(random,"_blank");
+window.open(random.file,"_blank");
 
 });
 
@@ -115,3 +115,57 @@ loader.remove();
 },20);
 
 });
+
+// Search
+
+const search =
+document.getElementById("search");
+
+search.addEventListener("input",()=>{
+
+const value =
+search.value.toLowerCase();
+
+const filtered =
+wallpapers.filter(w=>
+
+w.name.toLowerCase()
+.includes(value)
+
+);
+
+loadGallery(filtered);
+
+});
+
+// Filters
+
+document.getElementById("allBtn")
+.onclick = ()=> loadGallery(wallpapers);
+
+document.getElementById("spaceBtn")
+.onclick = ()=> loadGallery(
+
+wallpapers.filter(
+w=>w.category==="space"
+)
+
+);
+
+document.getElementById("gamingBtn")
+.onclick = ()=> loadGallery(
+
+wallpapers.filter(
+w=>w.category==="gaming"
+)
+
+);
+
+document.getElementById("aestheticBtn")
+.onclick = ()=> loadGallery(
+
+wallpapers.filter(
+w=>w.category==="aesthetic"
+)
+
+);
