@@ -73,7 +73,8 @@ loader.style.opacity="0";
 
 setTimeout(()=>{
 
-loader.style.display="none";
+document.body.style.overflow="auto";
+loader.remove();
 
 },1000);
 
