@@ -2,33 +2,99 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Forge</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Galaxy Forge</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="hero">
+<div class="stars"></div>
 
-        <h1>🌌 Galaxy Forge</h1>
+<header class="hero">
 
-        <p>
-            Gaming • Space • Cyberpunk • Aesthetic Wallpapers
-        </p>
+<h1>🌌 GALAXY FORGE</h1>
 
-        <button onclick="showRandomWallpaper()">
-            Random Wallpaper
-        </button>
+<p>
+Gaming • Space • Cyberpunk Wallpapers
+</p>
 
-    </div>
+<button onclick="showRandomWallpaper()">
+🎲 Random Wallpaper
+</button>
 
-    <div id="wallpaperContainer" class="gallery"></div>
+</header>
 
-    <script src="script.js"></script>
+<section class="top-bar">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search wallpapers..."
+onkeyup="searchWallpaper()"
+>
+
+</section>
+
+<section class="filters">
+
+<button onclick="filterWallpapers('all')">
+All
+</button>
+
+<button onclick="filterWallpapers('space')">
+Space
+</button>
+
+<button onclick="filterWallpapers('gaming')">
+Gaming
+</button>
+
+<button onclick="filterWallpapers('aesthetic')">
+Aesthetic
+</button>
+
+</section>
+
+<section class="stats">
+
+<div class="stat-card">
+<h2>8</h2>
+<p>Wallpapers</p>
+</div>
+
+<div class="stat-card">
+<h2>3</h2>
+<p>Categories</p>
+</div>
+
+<div class="stat-card">
+<h2>∞</h2>
+<p>Downloads</p>
+</div>
+
+</section>
+
+<h2 class="section-title">
+🌠 Wallpaper Collection
+</h2>
+
+<div id="gallery" class="gallery"></div>
+
+<div id="preview" class="preview">
+
+<span onclick="closePreview()">
+✖
+</span>
+
+<img id="previewImg">
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
