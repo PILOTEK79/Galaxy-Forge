@@ -1,4 +1,5 @@
-console.log("JS Loaded");
+console.log("Galaxy Forge Loaded");
+
 const gallery = document.getElementById("gallery");
 
 const wallpapers = [
@@ -43,13 +44,22 @@ file:"wp11697464-rgb-room-wallpapers.jpg"
 
 function loadGallery(items = wallpapers){
 
-gallery.innerHTML="";
+gallery.innerHTML = "";
 
-items.forEach(w=>{
+items.forEach(w => {
 
 gallery.innerHTML += `
 <div class="wallpaper-card">
-<img src="${w.file}">
+
+<img src="${w.file}" alt="${w.name}">
+
+<h3 style="
+padding:15px;
+text-align:center;
+">
+${w.name}
+</h3>
+
 </div>
 `;
 
@@ -57,56 +67,77 @@ gallery.innerHTML += `
 
 }
 
-
 loadGallery();
 
-document.getElementById("randomBtn")
-.addEventListener("click",()=>{
+/* Random Wallpaper */
+
+const randomBtn =
+document.getElementById("randomBtn");
+
+if(randomBtn){
+
+randomBtn.addEventListener("click",()=>{
 
 const random =
-wallpapers[Math.floor(
+wallpapers[
+Math.floor(
 Math.random()*wallpapers.length
-)];
+)
+];
 
-window.open(random.file,"_blank");
+window.open(
+random.file,
+"_blank"
+);
 
 });
 
+}
+
+/* Loader */
+
 window.addEventListener("load",()=>{
 
-let loader =
+const loader =
 document.getElementById("loader");
 
-let bar =
+const bar =
 document.getElementById("progress-bar");
 
-let text =
+const text =
 document.getElementById("progress-text");
 
-let progress=0;
+if(!loader || !bar || !text){
+return;
+}
 
-let interval = setInterval(()=>{
+let progress = 0;
+
+const interval =
+setInterval(()=>{
 
 progress++;
 
 bar.style.width =
-progress+"%";
+progress + "%";
 
 text.innerHTML =
-progress+"%";
+progress + "%";
 
-if(progress>=100){
+if(progress >= 100){
 
 clearInterval(interval);
 
-loader.style.transform =
-"scale(1.3)";
+loader.style.transition =
+"1s";
 
-loader.style.opacity="0";
+loader.style.opacity = "0";
 
 setTimeout(()=>{
 
-document.body.style.overflow="auto";
+document.body.style.overflow =
+"auto";
+
 loader.remove();
 
 },1000);
@@ -117,26 +148,26 @@ loader.remove();
 
 });
 
-console.log(document.getElementById("allBtn"));
-console.log(document.getElementById("spaceBtn"));
-console.log(document.getElementById("gamingBtn"));
-console.log(document.getElementById("aestheticBtn"));
-console.log(document.getElementById("search"));
-
-// Search
+/* Search */
 
 const search =
 document.getElementById("search");
 
-search.addEventListener("input",()=>{
+if(search){
+
+search.addEventListener(
+"input",
+()=>{
 
 const value =
-search.value.toLowerCase();
+search.value
+.toLowerCase();
 
 const filtered =
 wallpapers.filter(w=>
 
-w.name.toLowerCase()
+w.name
+.toLowerCase()
 .includes(value)
 
 );
@@ -145,13 +176,39 @@ loadGallery(filtered);
 
 });
 
-// Filters
+}
 
-document.getElementById("allBtn")
-.onclick = ()=> loadGallery(wallpapers);
+/* Filter Buttons */
 
-document.getElementById("spaceBtn")
-.onclick = ()=> loadGallery(
+const allBtn =
+document.getElementById("allBtn");
+
+const spaceBtn =
+document.getElementById("spaceBtn");
+
+const gamingBtn =
+document.getElementById("gamingBtn");
+
+const aestheticBtn =
+document.getElementById("aestheticBtn");
+
+if(allBtn){
+
+allBtn.onclick = ()=>{
+
+loadGallery(
+wallpapers
+);
+
+};
+
+}
+
+if(spaceBtn){
+
+spaceBtn.onclick = ()=>{
+
+loadGallery(
 
 wallpapers.filter(
 w=>w.category==="space"
@@ -159,8 +216,15 @@ w=>w.category==="space"
 
 );
 
-document.getElementById("gamingBtn")
-.onclick = ()=> loadGallery(
+};
+
+}
+
+if(gamingBtn){
+
+gamingBtn.onclick = ()=>{
+
+loadGallery(
 
 wallpapers.filter(
 w=>w.category==="gaming"
@@ -168,11 +232,22 @@ w=>w.category==="gaming"
 
 );
 
-document.getElementById("aestheticBtn")
-.onclick = ()=> loadGallery(
+};
+
+}
+
+if(aestheticBtn){
+
+aestheticBtn.onclick = ()=>{
+
+loadGallery(
 
 wallpapers.filter(
 w=>w.category==="aesthetic"
 )
 
 );
+
+};
+
+}
